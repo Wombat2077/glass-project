@@ -10,14 +10,21 @@ use Request;
 class Products extends Model
 {
     use HasFactory;
-
-    function getPhoto()
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+    ];
+    public function getPhoto()
     {
-        return Storage::get($this->photoName);
+
     }
 
-    function uploadPhoto(Request $request)
+    public function uploadPhoto(Request $request)
     {
-        return Storage::putFile($this->photoName, $this->photo);
+
+    }
+    public function comments(){
+        return $this->hasMany('comments');
     }
 }
