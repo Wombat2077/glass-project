@@ -17,7 +17,7 @@ class Authorized
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::user()){
-            return response()->json(['error' => "Authorization needed"], $status = 403);
+            return response()->json(['error' => "Authorization needed"], $status = 401);
         }
         return $next($request);
     }

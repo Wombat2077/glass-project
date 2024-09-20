@@ -17,7 +17,7 @@ class Administrator
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::user()?->is_admin){
-            return response()->json([], $status = 404);
+            return response()->json([], $status = 403);
         }
         return $next($request);
     }
