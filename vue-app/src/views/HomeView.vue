@@ -1,22 +1,8 @@
 <template>
-    <Menubar :model="items" />
+    <navigation-component></navigation-component>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import Menubar from 'primevue/menubar';
-const items = ref([
-    {
-        label: 'Главная',
-        action: () => { }
-    },
-    {
-        label: 'Наши Продукты',
-        action: () => { }
-    },
-    {
-        label: 'О нас',
-        action: () => { }
-    },
-]);
+import NavigationComponent from '@/components/NavigationComponent.vue';
+
 </script>
