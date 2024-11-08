@@ -4,18 +4,19 @@
 <script setup>
 import { ref } from 'vue';
 import Menubar from 'primevue/menubar';
+import router from '@/router';
 const items = ref([
     {
         label: 'Главная',
-        action: () => { }
+        command: () => { console.log('111');router.push('/app/') }
     },
     {
         label: 'Наши Продукты',
-        action: () => { }
+        command: () => { router.push('/app/products') }
     },
     {
         label: 'О нас',
-        action: () => { }
+        command: () => { router.push('/app/about') }
     },
 ]);
 </script>

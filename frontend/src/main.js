@@ -3,8 +3,8 @@ import App from './App.vue'
 import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
 import router  from './router/index'
+import ToastService from 'primevue/toastservice';
 
-const AppUrl = 'localhost';
 
 
 
@@ -16,7 +16,7 @@ createApp(App)
                 preset: Aura
             }
         })
+    .use(ToastService)
     .mount('#app')
-export {
-    AppUrl
-}
+
+export const AppUrl = 'http://localhost:8000';
