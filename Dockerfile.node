@@ -1,0 +1,9 @@
+#app build
+FROM node:latest AS build-stage
+WORKDIR /client
+COPY /frontend/package*.json /client/
+RUN npm install
+COPY /frontend /client
+RUN npm run build
+ENTRYPOINT [ "npm", "run", "serve" ]
+

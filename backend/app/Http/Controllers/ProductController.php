@@ -13,7 +13,7 @@ class ProductController extends Controller
         return Products::all();
     }
     function getProduct(int $id) {
-        return Products::find($id) ?? response()->json([], status: 404 );
+        return Products::where("id", "=", $id)->with("comments")->get() ?? response()->json([], status: 404 );
     }
     private function storePhoto(Request $request){
         if(!$request->file('photo')){

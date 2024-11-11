@@ -11,12 +11,12 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     function login(Request $request){
-        $user = User::where('name', '=', $request['name'])
-                    ->orWhere('email', '=', $request['email'])
-                    ->where('password', '=', Hash::make($request['password']))
-                    ->first();
+        $user = User::where('email', '=', $request['email'])->first();
         if(!$user){
-            return response()->json(['error' => 'invalid password or username'], $status=422);
+            return response()->json(['error' => 'User not found'], $status=422);
+        }
+        if(!Hash::check($request->password, $user->password)){
+            return response()->json(['error' => 'Invalid email or password'], $status=422);
         }
         Auth::login($user, remember: $request['remember']);
         return response()->json(Auth::user()->makeVisible('is_admin'),);

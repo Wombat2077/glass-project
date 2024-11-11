@@ -1,0 +1,18 @@
+
+# Dockerfile
+#server build
+FROM php:8.3-fpm  AS server-build-stage
+
+RUN apt-get update -y && apt-get install -y libmcrypt-dev
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo ftp fileinfo
+RUN docker-php-ext-enable pdo fileinfo ftp
+WORKDIR /server
+COPY /backend /server
+RUN cp .env.example .env
+RUN php artisan key:generate
+RUN composer install
+
+EXPOSE 9000
+CMD php artisan serve --host=0.0.0.0 --port=9000

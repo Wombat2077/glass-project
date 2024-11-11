@@ -20,7 +20,4 @@ class Products extends Model
     public function comments(){
         return $this->hasMany(related: Comment::class, foreignKey: 'product_id');
     }
-    protected $with = [
-        'comments'
-    ];
 }
