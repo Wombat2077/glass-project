@@ -31,7 +31,7 @@ const props = defineProps({
     product: Object,
     is_loading: Boolean
 });
-const photopath = computed(() =>props.product.photopath ?AppUrl +'/'+ props.product.photopath : AppUrl+'/images/placeholder.jpeg')
+const photopath = computed(() =>props.product.photopath ?AppUrl +'/images/products'+ props.product.photopath : AppUrl+'/images/placeholder.jpeg')
 </script>
 
 <style scoped>
